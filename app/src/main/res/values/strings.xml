@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MoviesFollowerKotlin</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="moviesUpcomingTextView">Upcoming</string>
+    <string name="moviesTrendingTextView">Trending</string>
+    <string name="mmoviesNow_playingTextView">Now Playing</string>
+    <string name="MoviesMost_popularTextView">Most Popular</string>
+    <string name="moviesTop_ratedTextView">Top Rated</string>
+    <string name="overviewTextView">Overview</string>
+    <string name="you_may_want_to_watchTextView">You May Want To Watch</string>
+    <string name="upcomingMoviesBckdrop_contentDescribtion">BackDrop image</string>
+</resources>
