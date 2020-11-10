@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.mvfkotlin.myapplication.repository.MainRepository
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

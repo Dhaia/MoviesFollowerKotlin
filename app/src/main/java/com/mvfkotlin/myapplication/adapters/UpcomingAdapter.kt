@@ -6,16 +6,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mvfkotlin.myapplication.databinding.ListItemBinding
-import com.mvfkotlin.myapplication.data.MovieObject
+import com.mvfkotlin.myapplication.model.Item
+import com.mvfkotlin.myapplication.network.MovieNetworkObject
 
 
-class UpcomingAdapter : ListAdapter<MovieObject, UpcomingAdapter.UpcomingViewHolder> (Companion) {
+class UpcomingAdapter : ListAdapter<Item, UpcomingAdapter.UpcomingViewHolder> (Companion) {
 
     class UpcomingViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    companion object: DiffUtil.ItemCallback<MovieObject>() {
-        override fun areItemsTheSame(oldItem: MovieObject, newItem: MovieObject): Boolean = oldItem == newItem
-        override fun areContentsTheSame(oldItem: MovieObject, newItem: MovieObject): Boolean = oldItem.id == newItem.id
+    companion object: DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean = oldItem == newItem
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean = oldItem.id == newItem.id
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingViewHolder {

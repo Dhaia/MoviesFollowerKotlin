@@ -6,32 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import com.mvfkotlin.myapplication.R
 import com.mvfkotlin.myapplication.adapters.UpcomingAdapter
 import com.mvfkotlin.myapplication.data.MainViewModel
-import com.mvfkotlin.myapplication.databinding.ActivityMainBinding
 import com.mvfkotlin.myapplication.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    /**
-     * Lazily initialize [MainViewModel]
-     */
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this).get(MainViewModel::class.java)
-    }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle? ): View? {
-
+        savedInstanceState: Bundle? ): View?
+    {
         val binding: FragmentMainBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_main, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -39,7 +32,7 @@ class MainFragment : Fragment() {
         val upcomingAdapter = UpcomingAdapter()
         binding.adapter = upcomingAdapter
 
-        viewModel.moviesList.observe(viewLifecycleOwner, {
+        viewModel.upcomingMoviesList.observe(viewLifecycleOwner, {
             it.let ( upcomingAdapter::submitList)
             Timber.d("Data Observed = $it")
         })

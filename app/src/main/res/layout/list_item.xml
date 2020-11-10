@@ -6,7 +6,7 @@
     <data>
         <variable
             name="object"
-            type="com.mvfkotlin.myapplication.data.MovieObject" />
+            type="com.mvfkotlin.myapplication.model.Item" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
