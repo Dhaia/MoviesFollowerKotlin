@@ -1,12 +1,13 @@
 package com.mvfkotlin.myapplication.database
 
-import androidx.databinding.adapters.Converters
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 @TypeConverters(DbConverters::class)
-@Database(entities = [DatabaseEntity::class], version = 1)
+@Database(entities = [CashingDatabaseEntity::class, FavoriteDatabaseEntity::class], version = 4)
 abstract class ItemsDatabase: RoomDatabase(){
 
     abstract fun databaseDao(): DbDao

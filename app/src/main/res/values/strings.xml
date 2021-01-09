@@ -4,10 +4,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="moviesUpcomingTextView">Upcoming</string>
     <string name="moviesTrendingTextView">Trending</string>
-    <string name="mmoviesNow_playingTextView">Now Playing</string>
+    <string name="moviesNow_playingTextView">Now Playing</string>
     <string name="MoviesMost_popularTextView">Most Popular</string>
     <string name="moviesTop_ratedTextView">Top Rated</string>
     <string name="overviewTextView">Overview</string>
     <string name="you_may_want_to_watchTextView">You May Want To Watch</string>
-    <string name="upcomingMoviesBckdrop_contentDescribtion">BackDrop image</string>
+    <string name="upcomingMoviesBackdrop_contentDescription">BackDrop image</string>
+    <string name="TvAiring_todayTextView">Airing Today</string>
+    <string name="tvTrendingTextView">Trending</string>
+    <string name="tvMost_popularTextView">Most Popular</string>
+    <string name="tvTop_ratedTextView">Top Rated</string>
+    <string name="logoTextMV">MV</string>
+    <string name="logTextfollower">Follower</string>
+    <string name="add_to_favoritesTextView">Add To Favorites</string>
 </resources>

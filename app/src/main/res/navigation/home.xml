@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
+    android:id="@+id/home"
     app:startDestination="@id/mainFragment">
 
     <fragment
@@ -10,15 +10,23 @@
         android:name="com.mvfkotlin.myapplication.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
+
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment"
-            app:popUpTo="@id/detailsFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/details_fragment">
+        </action>
     </fragment>
     <fragment
-        android:id="@+id/detailsFragment"
+        android:id="@+id/details_fragment"
         android:name="com.mvfkotlin.myapplication.ui.DetailsFragment"
-        android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details"/>
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+
+        <argument android:name="item"
+            app:argType="com.mvfkotlin.myapplication.model.Item" />
+
+        <action
+            android:id="@+id/action_details_fragment_self"
+            app:destination="@id/details_fragment" />
+    </fragment>
 </navigation>

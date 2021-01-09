@@ -2,33 +2,53 @@ package com.mvfkotlin.myapplication.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mvfkotlin.myapplication.databinding.ListItemBinding
+import com.mvfkotlin.myapplication.R
+import com.mvfkotlin.myapplication.databinding.MoviesItemBinding
+import com.mvfkotlin.myapplication.databinding.UpcomingItemBinding
 import com.mvfkotlin.myapplication.model.Item
-import com.mvfkotlin.myapplication.network.MovieNetworkObject
 
 
-class UpcomingAdapter : ListAdapter<Item, UpcomingAdapter.UpcomingViewHolder> (Companion) {
+class UpcomingAdapter  internal constructor(
+    private var mList: List<Item>,
+    private val mListener: UpcomingItemClickListener
+) : RecyclerView.Adapter<UpcomingAdapter.UpcomingViewHolder>() {
 
-    class UpcomingViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingViewHolder = UpcomingViewHolder.from(parent)
 
-    companion object: DiffUtil.ItemCallback<Item>() {
-        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean = oldItem == newItem
-        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean = oldItem.id == newItem.id
+    override fun onBindViewHolder(holder: UpcomingViewHolder, position: Int) = holder.bind(mList[position], mListener)
+
+    override fun getItemCount(): Int = mList.size
+
+
+    class UpcomingViewHolder(val binding: UpcomingItemBinding) : RecyclerView.ViewHolder(binding.root){
+
+        fun bind(currentProduct: Item, listener : UpcomingItemClickListener){
+            binding.`object` = currentProduct
+            binding.upcomingItemClickListener = listener
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): UpcomingViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding: UpcomingItemBinding = DataBindingUtil
+                    .inflate(layoutInflater, R.layout.upcoming_item,
+                        parent, false)
+                return UpcomingViewHolder(binding)
+            }
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ListItemBinding.inflate(layoutInflater)
-
-        return UpcomingViewHolder(binding)
+    fun setData(list: List<Item>){
+        this.mList = list
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: UpcomingViewHolder, position: Int) {
-        val currentItem = getItem(position)
-        holder.binding.`object` = currentItem
-        holder.binding.executePendingBindings()
+    interface UpcomingItemClickListener {
+        fun upcomingItemClicked(item: Item)
     }
 }

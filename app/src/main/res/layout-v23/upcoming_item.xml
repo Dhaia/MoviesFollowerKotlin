@@ -7,13 +7,22 @@
         <variable
             name="object"
             type="com.mvfkotlin.myapplication.model.Item" />
+
+        <variable
+            name="upcomingItemClickListener"
+            type="com.mvfkotlin.myapplication.adapters.UpcomingAdapter.UpcomingItemClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:paddingEnd="2dp"
         android:paddingStart="14dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{() -> upcomingItemClickListener.upcomingItemClicked(object)}">
 
         <ImageView
             android:id="@+id/upcomingBackDrop"
@@ -24,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/fifth_image"
-            android:contentDescription="@string/upcomingMoviesBckdrop_contentDescribtion" />
+            android:contentDescription="@string/upcomingMoviesBackdrop_contentDescription" />
 
         <ImageView
             android:layout_width="0dp"

@@ -1,6 +1,7 @@
 package com.mvfkotlin.myapplication.adapters
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -8,6 +9,8 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.mvfkotlin.myapplication.R
+import com.mvfkotlin.myapplication.util.setGenres
+import com.mvfkotlin.myapplication.util.setRatingImageUtils
 import timber.log.Timber
 
 
@@ -33,4 +36,21 @@ fun RecyclerView.bindRecyclerViewAdapter(adapter: RecyclerView.Adapter<*>) {
         Timber.d("Setting the Adapter")
         this.adapter = adapter
     }
+}
+
+@BindingAdapter(value = ["setRating"])
+fun TextView.bindText(rating: Double?){
+    val text: TextView = this
+    text.text = rating.toString()
+}
+
+@BindingAdapter(value = ["setRatingImage"])
+fun ImageView.bindImage(rating: Double?){
+    setRatingImageUtils(rating, this)
+}
+
+@BindingAdapter(value = ["setGenresTextView"])
+fun TextView.bindGenresText(list: List<Int>){
+    val text = this
+    text.text = setGenres(list)
 }

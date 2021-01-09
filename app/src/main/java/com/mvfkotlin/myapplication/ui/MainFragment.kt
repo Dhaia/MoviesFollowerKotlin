@@ -1,46 +1,44 @@
 package com.mvfkotlin.myapplication.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mvfkotlin.myapplication.R
-import com.mvfkotlin.myapplication.adapters.UpcomingAdapter
-import com.mvfkotlin.myapplication.data.MainViewModel
+import com.mvfkotlin.myapplication.adapters.TabsAdapter
 import com.mvfkotlin.myapplication.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
 
-    private val viewModel: MainViewModel by viewModels()
+    override var bottomNavigationViewVisibility = View.VISIBLE
+    private lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle? ): View?
     {
-        val binding: FragmentMainBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_main, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val upcomingAdapter = UpcomingAdapter()
-        binding.adapter = upcomingAdapter
+        val pager = binding.pager
+        val adapter = TabsAdapter(this)
+        pager.isUserInputEnabled = false
+        pager.adapter = adapter
 
-        viewModel.upcomingMoviesList.observe(viewLifecycleOwner, {
-            it.let ( upcomingAdapter::submitList)
-            Timber.d("Data Observed = $it")
-        })
+        val tablayout: TabLayout = binding.tabLayout
+        val names:Array<String> = arrayOf("Movies","Tv Shows")
+        TabLayoutMediator(tablayout,pager){tab, position ->
+            tab.text = names[position]
+        }.attach()
 
         return binding.root
     }
 }
-
-
-//        binding.detailsFragmentButton.setOnClickListener(){view: View ->
-//            view.findNavController().navigate(R.id.action_mainFragment_to_detailsFragment) }
