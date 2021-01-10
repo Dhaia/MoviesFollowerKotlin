@@ -7,7 +7,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @TypeConverters(DbConverters::class)
-@Database(entities = [CashingDatabaseEntity::class, FavoriteDatabaseEntity::class], version = 4)
+@Database(entities = [CashingDatabaseEntity::class, FavoriteDatabaseEntity::class], version = 5)
 abstract class ItemsDatabase: RoomDatabase(){
 
     abstract fun databaseDao(): DbDao

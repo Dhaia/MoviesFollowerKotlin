@@ -14,7 +14,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:focusable="true"
@@ -53,33 +53,38 @@
 
         <TextView
             android:id="@+id/favorites_releaseDate_textView"
-            android:text="@{item.releaseDate}"
             android:layout_width="wrap_content"
-            android:letterSpacing="0.005"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="26dp"
+
             android:fontFamily="@font/gilroy_medium"
+            android:letterSpacing="0.005"
             android:maxLines="1"
-            tools:text="Released: 2020 07 12"
+            android:text="@{item.releaseDate}"
             android:textColor="#A3A3A3"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/favorites_poster_imageView"
-            app:layout_constraintTop_toBottomOf="@+id/favorites_title_textView" />
+            app:layout_constraintStart_toStartOf="@+id/favorites_title_textView"
+            app:layout_constraintTop_toBottomOf="@+id/favorites_title_textView"
+            tools:text="Released: 2020 07 12" />
 
         <TextView
             android:id="@+id/favorites_genre_textView"
-            android:layout_width="wrap_content"
-            android:letterSpacing="0.005"
+            setGenresTextView="@{item.genreIds}"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
             android:fontFamily="@font/gilroy_medium"
+            android:gravity="start"
+            android:letterSpacing="0.005"
             android:maxLines="2"
-            tools:text="Drama, Action"
             android:textColor="#A3A3A3"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/favorites_releaseDate_textView"
-            app:layout_constraintTop_toBottomOf="@+id/favorites_releaseDate_textView" />
+            app:layout_constraintTop_toBottomOf="@+id/favorites_releaseDate_textView"
+            tools:text="Drama, Action" />
 
         <TextView
             android:id="@+id/favorites_adult_textView"

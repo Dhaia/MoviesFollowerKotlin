@@ -30,7 +30,7 @@
             android:id="@+id/item_poster_imageView"
             android:layout_width="110dp"
             android:layout_height="180dp"
-            app:setImageUrl="@{object.backdropPath}"
+            app:setImageUrl="@{object.posterPath}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/movie_poster_test"

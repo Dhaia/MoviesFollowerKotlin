@@ -84,18 +84,18 @@
                 <TextView
                     android:id="@+id/moviePage_title"
                     android:layout_width="240dp"
-                    android:maxLines="2"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="0.01"
                     android:layout_marginStart="14dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/gilroy_medium"
+                    android:letterSpacing="0.01"
+                    android:maxLines="2"
                     android:shadowColor="#000000"
                     android:shadowRadius="22"
                     android:text="@{item.title}"
                     android:textColor="#EFEFEF"
                     android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/moviePage_poster"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,16 +118,19 @@
 
                 <TextView
                     android:id="@+id/genre_textView"
-                    android:layout_width="wrap_content"
+                    setGenresTextView="@{item.genreIds}"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/gilroy_light"
                     android:letterSpacing="0.01"
                     android:shadowColor="#000000"
                     android:shadowRadius="20"
-                    setGenresTextView="@{item.genreIds}"
                     android:textColor="#C6C6C6"
                     android:textSize="14sp"
+                    android:maxLines="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.027"
                     app:layout_constraintStart_toStartOf="@+id/moviePage_releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/moviePage_releaseDate" />
 
@@ -149,7 +152,7 @@
                     android:fontFamily="@font/gilroy_light"
                     android:letterSpacing="0.01"
                     android:textSize="14sp"
-                    android:text="IGNORED"
+                    setVoteCount="@{item.voteCount}"
                     android:textColor="#838383"
                     app:layout_constraintEnd_toEndOf="@+id/moviePage_rating"
                     app:layout_constraintStart_toStartOf="@+id/moviePageStarsImageView"

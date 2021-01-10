@@ -54,3 +54,9 @@ fun TextView.bindGenresText(list: List<Int>){
     val text = this
     text.text = setGenres(list)
 }
+
+@BindingAdapter(value = ["setVoteCount"])
+fun TextView.bindTextVoteCount(voteCount: Int?){
+    val text: TextView = this
+    text.text = voteCount.toString()
+}

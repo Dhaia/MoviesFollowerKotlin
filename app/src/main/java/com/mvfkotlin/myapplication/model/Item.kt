@@ -6,15 +6,15 @@ import kotlinx.android.parcel.Parcelize
 // The model that is used by the app
 @Parcelize
 data class Item (
-    val popularity: Double,
-    val voteCount: Int,
-    val posterPath: String,
-    val id: Int,
+    val popularity: Double?,
+    val voteCount: Int?,
+    val posterPath: String?,
+    val id: Int?,
     val backdropPath: String?,
-    val originalTitle: String,
-    val genreIds: List<Int>,
-    val title: String,
-    val overview: String,
-    val releaseDate: String,
-    val voteAverage: Double
+    val originalTitle: String?,
+    val genreIds: List<Int>?,
+    val title: String?,
+    val overview: String?,
+    val releaseDate: String?,
+    val voteAverage: Double?
 ): Parcelable
