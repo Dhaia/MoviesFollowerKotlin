@@ -1,15 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-parcelize'
 
 // In order to have parcelize annotation
-androidExtensions {
-    experimental = true
-}
-
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
@@ -62,8 +58,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Navigation dependency
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.3"
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -77,9 +73,15 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
-    def hilt_viewmodels = "1.0.0-alpha02"
+    // Hilt
+    def hilt_version = "2.31.2-alpha"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation "com.google.dagger:hilt-android:2.31.2-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+    def hilt_viewmodels = "1.0.0-alpha03"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodels"
-    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodels"
 
     // Timber for the logs
     implementation 'com.jakewharton.timber:timber:4.7.1'
@@ -92,20 +94,19 @@ dependencies {
     // Library for rounded corners
     implementation 'jp.wasabeef:picasso-transformations:2.0.0'
 
-    // Hilt
-    implementation "com.google.dagger:hilt-android:2.28-alpha"
-    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
-
     // Room
-    def room_version = "2.2.5"
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
-    // Kotlin Extensions and Coroutines support for Room
-    implementation 'androidx.room:room-ktx:2.2.5'
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // For the Tab Layout
     implementation 'com.google.android.material:material:1.2.1'
+
 }

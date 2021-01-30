@@ -234,27 +234,27 @@
                     app:layout_constraintTop_toBottomOf="@+id/similar_textView" />
 
                 <Button
-                    android:onClick="@{() -> viewModel.addItemToDb(item)}"
                     android:id="@+id/favorites_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="100dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="100dp"
                     android:background="@drawable/favorites_button_selector"
+                    android:clickable="true"
+                    android:contentDescription="@string/add_to_favoritesTextView"
+                    android:focusable="true"
                     android:fontFamily="@font/gilroy_medium"
-                    android:letterSpacing="0.5"
+                    android:letterSpacing="0.3"
+                    android:onClick="@{() -> viewModel.addItemToDb(item)}"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:shadowColor="#0CC59A"
                     android:shadowRadius="20"
                     android:text="@string/add_to_favoritesTextView"
                     android:textColor="#00DAA6"
-                    app:layout_constraintStart_toStartOf="@+id/moviePage_overview"
-                    app:layout_constraintTop_toBottomOf="@id/similar_recyclerView"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:contentDescription="@string/add_to_favoritesTextView"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/similar_recyclerView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

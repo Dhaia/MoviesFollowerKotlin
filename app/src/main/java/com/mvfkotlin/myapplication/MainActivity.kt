@@ -16,7 +16,6 @@ import timber.log.Timber
 import timber.log.Timber.DebugTree
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.mvfkotlin.myapplication.util.setGenres

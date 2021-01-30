@@ -9,19 +9,22 @@ import com.mvfkotlin.myapplication.database.DbDao
 import com.mvfkotlin.myapplication.database.DbMapper
 import com.mvfkotlin.myapplication.model.Item
 import com.mvfkotlin.myapplication.repository.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 
 @ExperimentalCoroutinesApi
+@HiltViewModel
 class MainViewModel
-@ViewModelInject
+@Inject
 constructor(
     private val mainRepository: MainRepository,
     private val dbDao: DbDao,
     private val dbMapper: DbMapper,
-    @Assisted private val savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     // I didn't make this one private because I have to observe it and change its value when the app

@@ -1,7 +1,7 @@
 package com.mvfkotlin.myapplication.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 // The model that is used by the app
 @Parcelize
